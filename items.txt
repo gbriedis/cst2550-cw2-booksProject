@@ -1,0 +1,9 @@
+CD|Kamikaze by Eminem|0|
+CD|Infinite by Eminem|7|
+CD|Thriller by Michael Jackon|3|
+DVD|The Joker|2|
+DVD|Star Wars: The Force Awakens|10|
+DVD|Skyfall|25|
+Magazine|Vogue|23|
+Magazine|GQ|12|
+Magazine|Classic Bike|32|

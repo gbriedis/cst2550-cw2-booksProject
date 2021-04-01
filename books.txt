@@ -1,8 +1,8 @@
 Understanding Machine Learning	Shai Shalev-Shwartz; Shai Ben-David	9781107057135	2	
 Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow	Aurélien Géron	9781492032618	5	
-The Hundred-page Machine Learning Book	Andriy Burkov	9781999579517	2	
-Concepts in Programming Languages	John C. Mitchell	9780521780988	1	
-Understanding MySQL Internals	Alexander Pachev; Sasha Pachev	9780596009571	9	
+The Hundred-page Machine Learning Book	Andriy Burkov   9781999579517	2
+Concepts in Programming Languages	John C. Mitchell    9780521780988	1
+Understanding MySQL Internals	Alexander Pachev; Sasha Pachev  9780596009571	9
 Urban Operating Systems	Andres Luque-Ayala; Simon Marvin	9780262539814	9	
 Deep Reinforcement Learning Hands-On	Maxim Lapan	9781788839303	7	
 Modern Graph Theory	Bela Bollobas	9781461206194	3	
