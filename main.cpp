@@ -5,6 +5,14 @@
 #include "Book.h"
 #include "Collection.h"
 
+void outputChoice() {
+    std::cout << "Press 1 to see all the books\n";
+    std::cout << "Press 2 to see Search Book by its Title\n";
+    std::cout << "Press 3 to Add/Remove Book\n";
+    std::cout << "Press 4 to Load new data from different text file\n";
+    std::cout << "Press 0 to Exit the program\n";
+}
+
 int main() {
 
     // read book from file
@@ -41,6 +49,33 @@ int main() {
     file.close();
 
 
+    while(true){
+        outputChoice();
+        int choice;
+        std::string bookSearch;
+        std::cin >> choice;
 
+        switch(choice) {
+            case 1:
+                collection.output();
+                break;
+            case 2:
+                std::cout << "Enter a book you'd like to search\n";
+                std::cin.ignore();
+                std::getline(std::cin, bookSearch);
+                std::cout << collection.find(bookSearch);
+                break;
+            case 3:
+                std::cout << "Enter ";
+
+            case 0:
+                return 0;
+            default:
+                std::cout << "Invalid choice\n";
+                break;
+        }
+
+
+    }
     return 0;
 }
