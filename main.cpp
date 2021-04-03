@@ -7,15 +7,16 @@
 struct Node *head = NULL;
 
 void readFile(std::string);
+void displayOptions();
 
 int main() {
     readFile("books.txt");
+    int choice;
+    std::string bookSearch, bookTitle, bookAuthor;
+    int bookIsbn, bookQuantity;
 
     while(true){
-        int choice;
-        std::string bookSearch, bookTitle, bookAuthor;
-        int bookIsbn, bookQuantity;
-
+        displayOptions();
         std::cin >> choice;
         switch(choice) {
             case 1:
@@ -52,6 +53,14 @@ int main() {
         }
     }
     return 0;
+}
+
+void displayOptions() {
+    std::cout << "Press 1 to View Books\n";
+    std::cout << "Press 2 to Search Book [By Full Title]\n";
+    std::cout << "Press 3 to Add Book\n";
+    std::cout << "Press 4 to Remove a Book\n";
+    std::cout << "Press 0 to Exit the Program\n";
 }
 
 void readFile(std::string fileName) {
