@@ -6,13 +6,13 @@
 
 struct Node *head = NULL;
 
-void readFile(std::string);
 void displayOptions();
+void readFile(std::string);
 
 int main() {
     readFile("books.txt");
     int choice;
-    std::string bookSearch, bookTitle, bookAuthor;
+    std::string bookSearch, bookTitle, bookAuthor, fileName;
     int bookIsbn, bookQuantity;
 
     while(true){
@@ -46,13 +46,20 @@ int main() {
                 std::cin.ignore();
                 std::getline(std::cin, bookTitle);
                 removeBook(head, bookTitle);
+                break;
+            case 5:
+                std::cout << "Enter file name: \n";
+                std::cin.ignore();
+                std::getline(std::cin, fileName);
+
+                readFile(fileName);
+                break;
             case 0:
                 return true;
             default:
                 std::cout << "Invalid Choice";
         }
     }
-    return 0;
 }
 
 void displayOptions() {
@@ -60,6 +67,7 @@ void displayOptions() {
     std::cout << "Press 2 to Search Book [By Full Title]\n";
     std::cout << "Press 3 to Add Book\n";
     std::cout << "Press 4 to Remove a Book\n";
+    std::cout << "Press 5 to Read new Books from Different File\n";
     std::cout << "Press 0 to Exit the Program\n";
 }
 
@@ -70,7 +78,6 @@ void readFile(std::string fileName) {
     std::string line;
     std::string title, author, isbn, quantity;
     int isbnInt, quantityInt;
-
 
     if(file.is_open()) {
         while(std::getline(file, line)){
@@ -86,7 +93,6 @@ void readFile(std::string fileName) {
             quantityInt = stol(quantity);
 
             addToNode(&head, title, author, isbnInt, quantityInt);
-
         }
     }
     else {std::cout << "Failed opening a file";}

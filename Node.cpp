@@ -4,7 +4,7 @@
 
 void addToNode(struct Node** head, std::string nodeTitle, std::string nodeAuthor, int nodeIsbn, int nodeQuantity){
     struct Node* newNode = new Node;
-    struct Node *lastNode = *head;
+    struct Node* lastNode = *head;
 
     newNode->title = nodeTitle;
     newNode->author = nodeAuthor;
@@ -20,6 +20,10 @@ void addToNode(struct Node** head, std::string nodeTitle, std::string nodeAuthor
     while (lastNode->next != nullptr)
         lastNode = lastNode->next;
     lastNode->next = newNode;
+
+    if(newNode->title == nodeTitle){
+        std::cout << "Added Book Title: [" << newNode->title << "] Book Author: [" << newNode->author << "] Book ISBN: [" << newNode->isbn << "] Book Quantity: [" << newNode->quantity << "]\n";
+    }
 }
 
 void searchBook(struct Node* head, std::string searchTitle) {
@@ -40,13 +44,19 @@ void removeBook(struct Node* head, std::string bookTitle) {
     Node* currentHead = head->next;
     while(currentHead != nullptr){
         if(currentHead->title == bookTitle){
-            std::cout << "Deleting: " << currentHead->title << "\n";
-            previousHead->next = currentHead->next;
-            delete currentHead;
-            return;
+            break;
         }
+        currentHead = currentHead->next;
     }
-    std::cout << "Couldn't find the Book Title\n Failed to Delete the Book\n";
+    if(currentHead == nullptr){
+        std::cout << "Couldn't find the Book Title\nFailed to Delete the Book\n";
+    }
+    else {
+        std::cout << "Deleting: " << currentHead->title << "\n";
+        previousHead->next = currentHead->next;
+        delete currentHead;
+        return;
+    }
 }
 
 void display(struct Node* node){

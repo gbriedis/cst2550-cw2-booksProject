@@ -1,7 +1,7 @@
 #include <iostream>
 
-#ifndef NODE_NODE_H
-#define NODE_NODE_H
+#ifndef NODE_H
+#define NODE_H
 
 
 struct Node {
@@ -18,4 +18,4 @@ void removeBook(struct Node* head, std::string bookTitle);
 void display(struct Node* node);
 
 
-#endif //NODE_NODE_H
+#endif //NODE_H
