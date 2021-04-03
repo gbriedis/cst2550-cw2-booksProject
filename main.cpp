@@ -2,28 +2,66 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "Book.h"
-#include "Collection.h"
+#include "Node.h"
 
-void outputChoice() {
-    std::cout << "Press 1 to see all the books\n";
-    std::cout << "Press 2 to see Search Book by its Title\n";
-    std::cout << "Press 3 to Add/Remove Book\n";
-    std::cout << "Press 4 to Load new data from different text file\n";
-    std::cout << "Press 0 to Exit the program\n";
-}
+struct Node *head = NULL;
+
+void readFile(std::string);
 
 int main() {
+    readFile("books.txt");
 
-    // read book from file
-    std::ifstream file("books.txt");
+    while(true){
+        int choice;
+        std::string bookSearch, bookTitle, bookAuthor;
+        int bookIsbn, bookQuantity;
+
+        std::cin >> choice;
+        switch(choice) {
+            case 1:
+                display(head);
+                break;
+            case 2:
+                std::cout << "Enter Title of the Book\n";
+                std::cin.ignore();
+                std::getline(std::cin, bookSearch);
+                searchBook(head, bookSearch);
+                break;
+            case 3:
+                std::cout << "Add Book to Database\nEnter Book Title: \n";
+                std::cin.ignore();
+                std::getline(std::cin, bookTitle);
+                std::cout << "Enter Book Author: \n";
+                std::getline(std::cin, bookAuthor);
+                std::cout << "Enter Book ISBN: \n";
+                std::cin >> bookIsbn;
+                std::cout << "Enter Book Quantity: \n";
+                std::cin >> bookQuantity;
+
+                addToNode(&head, bookTitle, bookAuthor, bookIsbn, bookQuantity);
+                break;
+            case 4:
+                std::cout << "Remove Book from Database\nEnter Book Title:\n";
+                std::cin.ignore();
+                std::getline(std::cin, bookTitle);
+                removeBook(head, bookTitle);
+            case 0:
+                return true;
+            default:
+                std::cout << "Invalid Choice";
+        }
+    }
+    return 0;
+}
+
+void readFile(std::string fileName) {
+
+    std::ifstream file(fileName);
 
     std::string line;
     std::string title, author, isbn, quantity;
     int isbnInt, quantityInt;
 
-    Book book;
-    Collection collection;
 
     if(file.is_open()) {
         while(std::getline(file, line)){
@@ -38,44 +76,11 @@ int main() {
             isbnInt = stol(isbn);
             quantityInt = stol(quantity);
 
-            book.setTitle(title);
-            book.setAuthor(author);
-            book.setIsbn(isbnInt);
-            book.setQuantity(quantityInt);
-            collection.add(Book(title, author, isbnInt, quantityInt));
+            addToNode(&head, title, author, isbnInt, quantityInt);
+
         }
     }
     else {std::cout << "Failed opening a file";}
     file.close();
 
-
-    while(true){
-        outputChoice();
-        int choice;
-        std::string bookSearch;
-        std::cin >> choice;
-
-        switch(choice) {
-            case 1:
-                collection.output();
-                break;
-            case 2:
-                std::cout << "Enter a book you'd like to search\n";
-                std::cin.ignore();
-                std::getline(std::cin, bookSearch);
-                std::cout << collection.find(bookSearch);
-                break;
-            case 3:
-                std::cout << "Enter ";
-
-            case 0:
-                return 0;
-            default:
-                std::cout << "Invalid choice\n";
-                break;
-        }
-
-
-    }
-    return 0;
 }
