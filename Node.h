@@ -1,14 +1,21 @@
-//
-// Created by Ginters Briedis on 03/04/2021.
-//
+#include <iostream>
 
-#ifndef UNTITLED4_NODE_H
-#define UNTITLED4_NODE_H
+#ifndef NODE_NODE_H
+#define NODE_NODE_H
 
 
-class Node {
-
+struct Node {
+    std::string title;
+    std::string author;
+    int isbn;
+    int quantity;
+    struct Node *next;
 };
 
+void addToNode(struct Node** head, std::string nodeTitle, std::string nodeAuthor, int nodeIsbn, int nodeQuantity);
+void searchBook(struct Node* head, std::string searchTitle);
+void removeBook(struct Node* head, std::string bookTitle);
+void display(struct Node* node);
 
-#endif //UNTITLED4_NODE_H
+
+#endif //NODE_NODE_H
